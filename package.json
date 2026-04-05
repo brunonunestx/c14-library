@@ -1,0 +1,19 @@
+{
+  "name": "c14-library",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:api": "turbo run dev --filter=@c14/api",
+    "dev:web": "turbo run dev --filter=@c14/web",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@nestjs/core", "esbuild"]
+  }
+}
