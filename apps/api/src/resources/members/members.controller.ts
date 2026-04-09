@@ -10,14 +10,14 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { BooksService } from './books.service';
-import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
+import { MembersService } from './members.service';
+import { CreateMemberDto } from './dto/create-member.dto';
+import { UpdateMemberDto } from './dto/update-member.dto';
 
-@ApiTags('books')
-@Controller('books')
-export class BooksController {
-  constructor(private readonly service: BooksService) {}
+@ApiTags('members')
+@Controller('members')
+export class MembersController {
+  constructor(private readonly service: MembersService) {}
 
   @Get()
   findAll() {
@@ -30,12 +30,12 @@ export class BooksController {
   }
 
   @Post()
-  create(@Body() body: CreateBookDto) {
+  create(@Body() body: CreateMemberDto) {
     return this.service.create(body);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: UpdateBookDto) {
+  update(@Param('id') id: string, @Body() body: UpdateMemberDto) {
     return this.service.update(id, body);
   }
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Book, Prisma } from '@prisma/client';
+import { Book } from '@prisma/client';
 import { PrismaService } from '../../providers/prisma/prisma.service';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksRepository {
@@ -18,11 +20,11 @@ export class BooksRepository {
     return this.prisma.book.findUnique({ where: { isbn } });
   }
 
-  create(data: Prisma.BookCreateInput): Promise<Book> {
+  create(data: CreateBookDto): Promise<Book> {
     return this.prisma.book.create({ data });
   }
 
-  update(id: string, data: Prisma.BookUpdateInput): Promise<Book> {
+  update(id: string, data: UpdateBookDto): Promise<Book> {
     return this.prisma.book.update({ where: { id }, data });
   }
 

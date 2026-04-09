@@ -3,8 +3,10 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { Book, Prisma } from '@prisma/client';
+import { Book } from '@prisma/client';
 import { BooksRepository } from './books.repository';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
@@ -20,13 +22,13 @@ export class BooksService {
     return book;
   }
 
-  async create(data: Prisma.BookCreateInput): Promise<Book> {
+  async create(data: CreateBookDto): Promise<Book> {
     const existing = await this.repository.findByIsbn(data.isbn);
     if (existing) throw new ConflictException(`ISBN already registered: ${data.isbn}`);
     return this.repository.create(data);
   }
 
-  async update(id: string, data: Prisma.BookUpdateInput): Promise<Book> {
+  async update(id: string, data: UpdateBookDto): Promise<Book> {
     await this.findById(id);
     return this.repository.update(id, data);
   }
