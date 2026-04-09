@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: c14-library-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: c14
+      POSTGRES_PASSWORD: c14pass
+      POSTGRES_DB: c14_library
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U c14 -d c14_library"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

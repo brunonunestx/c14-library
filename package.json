@@ -14,6 +14,13 @@
     "turbo": "^2.5.4"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@nestjs/core", "esbuild"]
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
+      "@prisma/engines",
+      "prisma"
+    ]
   }
 }
