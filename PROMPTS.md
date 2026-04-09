@@ -8,3 +8,16 @@
 - configure um swagger na api
 - crie uma pasta dto dentro de books e crie os dto usando class validator e api property para tipar as entradas das rotas
 - agora crie o modulo de membros, para registrar um membro da biblioteca, que serao os usuarios que farao os emprestimos
+- agora crie o modulo de emprestimos. Para criar um emprestimo, deve ser passado o id do livro e o id do usuario. NAs rotas de list/get retorne os campos membro e livro atraves das relacoes
+- vamos para o front, no mesmo nivel de src, crie uma pasta data e uma pasta domain, a data contera repositories e stores, a domain contera os contratos. Dentro de src, crie uma pasta components e uma pasta presentation, dentro de components criaremos os componentes para um design system consistente e dentro de presentation as paginas. No nivel de src crie tambem uma pasta router, que gerenciara a navegacao pela pagina usando react-router
+- dentro de data/repositories crie um base repository, que centralizara a instancia do axios. Inicialize a instancia do axios com um BASE URL que vira da env
+- crie uma class BaseRepository que as outras classes vao herdar dela e ja receber a instancia
+- agora crie os repositories para as rotas que criamos. Analise os controllers dentro de apps/api/src/resources para entender como deve ser feita a integracao. Crie classes que herdam do base e facam suas chamadas
+- crie o layout da pagina, teremos um header e um footer, no header teremos navigate entre as paginas.
+- crie a primeira pagina, que vai apenas exibir os livros cadastrados
+- adicione na tela de livros a possibilidade de cadastrar um livro tambem. Deve abrir um modal para inserir as informações e criar um livro
+- limite o isbn para ser um ISBN valido
+- agora crie a tela de membros, seguindo a mesma ideia, listagem de membros e cadastro de membro novo
+- agora crie a tela de emprestimos, a tela de emprestimos deve permitir criar emprestimos, listando livros e usuarios e deve tambem listar os emprestimos
+- agora crie uma rota para receber um emprestimo, o objetivo dela eh preencher o returnedAt, crie a rota, o metodo no service que registra no banco e configure no repository do front end essa rota para ficar acessivel para ser usada
+- integre no loans page para que a pessoa registre um emprestimo como concluido
