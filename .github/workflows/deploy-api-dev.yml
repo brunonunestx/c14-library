@@ -53,5 +53,6 @@ jobs:
               sudo docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
             cd /home/ubuntu/c14-library
             sudo docker compose pull
+            sudo docker compose run --rm api npx prisma migrate deploy
             sudo docker compose up -d --remove-orphans
             sudo docker image prune -a -f
