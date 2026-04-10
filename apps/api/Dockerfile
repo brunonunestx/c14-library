@@ -23,8 +23,11 @@ COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 COPY apps/api/package.json ./apps/api/
 RUN pnpm install --frozen-lockfile --filter @c14/api... --prod
 
-COPY --from=build /app/apps/api/dist ./apps/api/dist
 COPY apps/api/prisma ./apps/api/prisma
+COPY apps/api/prisma.config.ts ./apps/api/
+RUN pnpm --filter @c14/api db:generate
+
+COPY --from=build /app/apps/api/dist ./apps/api/dist
 
 WORKDIR /app/apps/api
 
