@@ -37,7 +37,7 @@ export class LoansService {
   }
 
   async create(data: CreateLoanDto): Promise<LoanWithRelations> {
-    const [book, _member, activeLoans] = await Promise.all([
+    const [book, , activeLoans] = await Promise.all([
       this.booksService.findById(data.bookId),
       this.membersService.findById(data.memberId),
       this.repository.countActiveByBookId(data.bookId),

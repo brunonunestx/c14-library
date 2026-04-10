@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../../providers/prisma/prisma.service';
-import { CreateLoanDto } from './dto/create-loan.dto';
 
 const include = { book: true, member: true } as const;
 
