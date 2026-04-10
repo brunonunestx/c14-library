@@ -11,6 +11,7 @@ RUN pnpm install --frozen-lockfile --filter @c14/api...
 # ---- build ----
 FROM deps AS build
 COPY apps/api ./apps/api
+RUN pnpm --filter @c14/api db:generate
 RUN pnpm --filter @c14/api build
 
 # ---- runner ----
