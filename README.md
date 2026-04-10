@@ -177,5 +177,5 @@ Loan        — id, bookId, memberId, loanedAt, dueDate, returnedAt?
 | Serviço | Local | Produção |
 |---|---|---|
 | Frontend | `http://localhost:5173` | https://c14.bruno-teixeira.com/ |
-| API | `http://localhost:3000` | https://c14.bruno-teixeira.com |
-| Swagger | `http://localhost:3000/docs` | https://c14.bruno-teixeira.com/docs |
+| API | `http://localhost:3000` | https://c14-api.bruno-teixeira.com |
+| Swagger | `http://localhost:3000/docs` | https://c14-api.bruno-teixeira.com/docs |
