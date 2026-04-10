@@ -1,11 +1,8 @@
 name: Deploy Web — Dev
 
 on:
-  push:
-    branches:
-      - develop
-    paths:
-      - 'apps/web/**'
+  release:
+    types: [published]
 
 jobs:
   deploy:
