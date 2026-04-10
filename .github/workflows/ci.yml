@@ -140,3 +140,34 @@ jobs:
 
       - name: Audit
         run: pnpm audit --audit-level=high
+
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+    needs: [build, lint, test, audit]
+    if: always()
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: ${{ secrets.MAIL_TO }}
+          from: C14 Library CI <${{ secrets.MAIL_USERNAME }}>
+          subject: >
+            [${{ needs.build.result == 'success' && needs.lint.result == 'success' && needs.test.result == 'success' && needs.audit.result == 'success' && 'SUCCESS' || 'FAILURE' }}]
+            CI ${{ github.repository }} — ${{ github.ref_name }} #${{ github.run_number }}
+          body: |
+            Pipeline: ${{ github.workflow }}
+            Branch:   ${{ github.ref_name }}
+            Commit:   ${{ github.sha }}
+            Author:   ${{ github.actor }}
+            Run:      ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Jobs:
+              Build:  ${{ needs.build.result }}
+              Lint:   ${{ needs.lint.result }}
+              Test:   ${{ needs.test.result }}
+              Audit:  ${{ needs.audit.result }}
