@@ -38,7 +38,7 @@ jobs:
           file: apps/api/Dockerfile
           platforms: linux/arm64
           push: true
-          tags: ${{ steps.login-ecr.outputs.registry }}/c14-api-dev:latest
+          tags: ${{ steps.login-ecr.outputs.registry }}/c14:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
