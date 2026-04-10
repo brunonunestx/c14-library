@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { Book } from '@prisma/client';
-import { PrismaService } from '../../providers/prisma/prisma.service';
-import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
+import { Injectable } from "@nestjs/common";
+import { Book } from "@prisma/client";
+import { PrismaService } from "../../providers/prisma/prisma.service";
+import { CreateBookDto } from "./dto/create-book.dto";
+import { UpdateBookDto } from "./dto/update-book.dto";
 
 @Injectable()
 export class BooksRepository {

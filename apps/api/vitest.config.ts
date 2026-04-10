@@ -6,5 +6,9 @@ export default defineConfig({
   test: {
     globals: true,
     root: './src',
+    reporters: ['default', 'junit'],
+    outputFile: {
+      junit: './test-results/junit.xml',
+    },
   },
 });
